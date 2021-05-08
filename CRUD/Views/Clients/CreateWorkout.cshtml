@@ -1,0 +1,43 @@
+﻿@model CRUD.Models.Workout
+
+@{
+    ViewData["Title"] = "CreateWorkout";
+}
+
+<h1>Create Workout</h1>
+
+<h4>Workout</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateWorkout">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="workoutTitle" class="control-label"></label>
+                <input asp-for="workoutTitle" class="form-control" />
+                <span asp-validation-for="workoutTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="workoutDate" class="control-label"></label>
+                <input asp-for="workoutDate" class="form-control" />
+                <span asp-validation-for="workoutDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="workoutThumbnail" class="control-label"></label>
+                <input asp-for="workoutThumbnail" class="form-control" />
+                <span asp-validation-for="workoutThumbnail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
