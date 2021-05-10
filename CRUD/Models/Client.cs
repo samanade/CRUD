@@ -11,7 +11,7 @@ namespace CRUD.Models
         [Key] public int ID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int phoneNumber { get; set; }
+        public string phoneNumber { get; set; }
         public string email { get; set; }
         public virtual List<Workout> Workouts { get; set; }
     }

@@ -21,7 +21,8 @@ namespace CRUD.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     lastName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    phoneNumber = table.Column<int>(type: "int", nullable: false),
+                    phoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     email = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },

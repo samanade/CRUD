@@ -32,8 +32,8 @@ namespace CRUD.Migrations
                     b.Property<string>("lastName")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("phoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("longtext");
 
                     b.HasKey("ID");
 

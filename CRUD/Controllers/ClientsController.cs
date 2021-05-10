@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CRUD.Controllers
 {
+    [Route("clients")]
     public class ClientsController : Controller
     {
         private readonly ApplicationDbContext dbContext;
@@ -26,46 +27,20 @@ namespace CRUD.Controllers
 
 
         [Route("details/{id:int}")]
-
         public IActionResult Details(int id)
         {
             var clientByID = dbContext.Clients.FirstOrDefault(c => c.ID == id);
             return View(clientByID);
         }
 
+
+        [Route("create")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // Create workout section
-        [Route("addWorkout/{clientid:int}")]
-        public IActionResult CreateWorkout(int workoutID)
-        {
-            var workout = dbContext.Workouts.FirstOrDefault(c => c.ID == workoutID);
-            ViewBag.WorkoutTitle = workout.workoutTitle;
-            ViewBag.WorkoutID = workout.ID;
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateWorkout(AddWorkoutBindingModel bindingModel)
-        {
-            var workoutToCreate = new Workout
-            {
-                workoutTitle = bindingModel.workoutTitle,
-                workoutDate = bindingModel.workoutDate,
-                workoutThumbnail = bindingModel.workoutThumbnail,
-                Client = dbContext.Clients.FirstOrDefault(c => c.ID == bindingModel.ClientID)
-            };
-
-            dbContext.Workouts.Add(workoutToCreate);
-            dbContext.SaveChanges();
-
-            return RedirectToAction("Details");
-
-        }
-
+        [Route("createclient")]
         [HttpPost]
         public IActionResult Create(AddClientBindingModel bindingModel)
         {
@@ -80,7 +55,7 @@ namespace CRUD.Controllers
             dbContext.Clients.Add(clientToCreate);
             dbContext.SaveChanges();
 
-            return RedirectToAction("Details");
+            return RedirectToAction("Details", new { id = clientToCreate.ID });
 
         }
         [Route("update/{id:int}")]
@@ -90,11 +65,19 @@ namespace CRUD.Controllers
             return View(clientByID);
         }
 
-        [HttpPut]
-        [Route("update/{id:int}")]
-        public IActionResult Update(Client client, int id)
+        [Route("edit/{id:int}")]
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            var clientToUpdate = dbContext.Clients.FirstOrDefault(c => c.ID == id);
+            var clientByID = dbContext.Clients.FirstOrDefault(c => c.ID == id);
+            return View(clientByID);
+        }
+
+        [Route("editclient")]
+        [HttpPost]
+        public IActionResult Edit(Client client)
+        {
+            var clientToUpdate = dbContext.Clients.FirstOrDefault(c => c.ID == client.ID);
             clientToUpdate.firstName = client.firstName;
             clientToUpdate.lastName = client.lastName;
             clientToUpdate.phoneNumber = client.phoneNumber;

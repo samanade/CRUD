@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210508090421_InitDB")]
+    [Migration("20210510051309_InitDB")]
     partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,8 +34,8 @@ namespace CRUD.Migrations
                     b.Property<string>("lastName")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("phoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("longtext");
 
                     b.HasKey("ID");
 

@@ -9,7 +9,7 @@ namespace CRUD.Models.Binding
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int phoneNumber { get; set; }
+        public string phoneNumber { get; set; }
         public string email { get; set; }
     }
 }
