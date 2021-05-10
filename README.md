@@ -65,10 +65,40 @@ Trello was used to track the progress of the project (pictured below). You can f
 When the user navigates to the URL, they are directed to the home page:
 ![homeloggedout][homeloggedout]
 
+Selecting "Clients" tab on the nav menu will bring up the follow page showing a list of all current clients:
+
+![clientslanding][clientslanding]
+
+Clicking the "Create New" link directs the user to a create form where they can enter a new client : 
+
+![newclient][newclient] 
+
+The same structure is followed for the "Workouts tab" from the homepage. The user is first directed to a page showing a list of all workouts that can edited or deleted. A new workout can also be created by following the "Create Workout" link. 
+
+Workouts for a client can be viewed from clients page by selecting "View Workouts" next to their name : 
+
+![viewworkouts][viewworkouts]
+
+## Known Issues
+There are a few bugs with the current build of the app:
+* The validation script does not render so HTML form inputs are not validated according to data type
+* Workouts can be edited however when editing a client details a not null reference error occurs
+## Future Improvements
+There are a number of improvements I would like to implement (outside of current bugs):
+* Allow exercises to also be added to workouts 
+* Login feature with account page where user can personalize their profile 
+
+## Authors
+Samuel Nwangwu
+
+
 
 [erd1]: https://i.imgur.com/ZRdRKwo.png
 [trello]: https://i.imgur.com/X68OFUm.png
 [riskassessment]: https://i.imgur.com/rXQhjK7.png
 [homeloggedout]: https://i.imgur.com/6p934TM.png
+[clientslanding]: https://i.imgur.com/SdDG4Wb.pngs
+[newclient]: https://i.imgur.com/PqrkyfJ.png
+[viewworkouts]: https://i.imgur.com/PbUlcb6.png
 
 

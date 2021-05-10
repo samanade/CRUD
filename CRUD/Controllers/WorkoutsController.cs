@@ -90,6 +90,26 @@ namespace CRUD.Controllers
 
         }
 
+        [Route("edit/{id:int}")]
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var workoutByID = dbContext.Workouts.FirstOrDefault(c => c.ID == id);
+            return View(workoutByID);
+        }
+
+        [Route("editworkout")]
+        [HttpPost]
+        public IActionResult Edit(Workout workout)
+        {
+            var workoutToUpdate = dbContext.Workouts.FirstOrDefault(c => c.ID == workout.ID);
+            workoutToUpdate.workoutTitle = workout.workoutTitle;
+            workoutToUpdate.workoutDate = workout.workoutDate;
+            workoutToUpdate.workoutThumbnail = workout.workoutThumbnail;
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
         [Route("delete/{id:int}")]
         public IActionResult Delete(int id)
         {
